@@ -1,0 +1,17 @@
+section,key,value
+issue_type,ACL,4
+issue_type,DHCP,4
+issue_type,DNS,4
+issue_type,Gateway,4
+issue_type,NAT,3
+issue_type,Routing,6
+issue_type,VLAN,3
+issue_type,Wireless,4
+severity,high,16
+severity,low,4
+severity,medium,12
+review_status,Accepted,21
+review_status,Edited,8
+review_status,Rejected,3
+ai_vs_expected,no,20
+ai_vs_expected,yes,12

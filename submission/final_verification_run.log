@@ -1,0 +1,60 @@
+NetSage AI - Final Verification Run
+Date: 2026-08-30
+
+1. Rule checker command:
+python src/rule_checker.py --cases data/cases.csv --limit 3
+Result: SUCCESS
+[
+  {
+    "case_id": "C01",
+    "expected_fault": "Missing VLAN 20 on switch trunk",
+    "findings": [
+      {
+        "rule": "missing_vlan",
+        "detail": "Missing VLAN(s): 20"
+      }
+    ]
+  },
+  {
+    "case_id": "C02",
+    "expected_fault": "VLAN database not saved",
+    "findings": [
+      {
+        "rule": "missing_vlan",
+        "detail": "Missing VLAN(s): 30"
+      }
+    ]
+  },
+  {
+    "case_id": "C03",
+    "expected_fault": "Subinterface VLAN tag missing",
+    "findings": [
+      {
+        "rule": "gateway_mismatch",
+        "detail": "Host gateway 10.40.40.1 does not match interface 10.40.40.254"
+      },
+      {
+        "rule": "interface_down",
+        "detail": "Interface(s) down: g0/0.40"
+      },
+      {
+        "rule": "missing_route",
+        "detail": "Missing route(s): 10.40.40.0/24"
+      }
+    ]
+  }
+]
+
+2. End-to-end workflow command:
+python src/workflow.py --cases data/cases.csv --reviews data/human_review_log.csv --out outputs --dashboard dashboard
+Result: SUCCESS
+Workflow complete. Outputs written.
+
+3. Unit tests command:
+python -m unittest discover -s tests -p 'test_*.py'
+Result: SUCCESS
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

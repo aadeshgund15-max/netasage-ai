@@ -1,0 +1,33 @@
+case_id,concept_tag,severity,expected_fault,ai_root_cause,ai_expected_agreement,review_status,review_notes,final_fault
+C01,VLAN,high,Missing VLAN 20 on switch trunk,VLAN/trunk misconfiguration,yes,Accepted,AI and expected fault aligned with trunk evidence,Missing VLAN 20 on switch trunk
+C02,VLAN,medium,VLAN database not saved,VLAN/trunk misconfiguration,yes,Accepted,,VLAN database not saved
+C03,VLAN,high,Subinterface VLAN tag missing,VLAN/trunk misconfiguration,yes,Edited,AI said generic routing issue but review pinpointed missing dot1q encapsulation,Subinterface VLAN tag missing
+C04,Gateway,medium,Missing default gateway on host,Routing path missing or incorrect,no,Edited,,Missing default gateway on host
+C05,Gateway,low,Wrong default gateway configured on host,L3 addressing mismatch,no,Accepted,Reviewed host config and confirmed wrong default gateway,Wrong default gateway configured on host
+C06,Gateway,high,Duplicate static IP on clients,L3 addressing mismatch,no,Accepted,Duplicate addressing confirmed by ARP instability,Duplicate static IP on clients
+C07,DHCP,high,Missing DHCP pool,DHCP scope or relay issue,yes,Accepted,No DHCP pool shown for VLAN70,Missing DHCP pool
+C08,DHCP,high,Missing DHCP relay helper,VLAN/trunk misconfiguration,no,Accepted,,Missing DHCP relay helper
+C09,DHCP,medium,DHCP option default-router incorrect,DHCP scope or relay issue,yes,Edited,AI focused DHCP generally; corrected to wrong default-router option,DHCP option default-router incorrect
+C10,Gateway,medium,Wrong subnet mask,L3 addressing mismatch,no,Accepted,Mask mismatch verified on one host,Wrong subnet mask
+C11,DNS,medium,Missing DNS server setting,DNS resolver or record issue,yes,Accepted,DNS server absent in host settings,Missing DNS server setting
+C12,DNS,low,Missing DNS A record,L3 addressing mismatch,no,Rejected,AI root cause was too vague and missed record-level problem,Missing DNS A record
+C13,DNS,high,Missing route to DNS server network,DNS resolver or record issue,yes,Accepted,Route to DNS subnet absent in table,Missing route to DNS server network
+C14,Routing,high,Missing static route,Routing path missing or incorrect,no,Accepted,Static route absent as expected,Missing static route
+C15,Routing,high,OSPF network type mismatch,Routing path missing or incorrect,no,Edited,AI labeled as route missing; reviewer set OSPF network type mismatch,OSPF network type mismatch
+C16,Routing,medium,EIGRP network statement missing,Routing path missing or incorrect,no,Accepted,,EIGRP network statement missing
+C17,ACL,high,Overly broad ACL deny,VLAN/trunk misconfiguration,no,Accepted,ACL deny line clearly blocks app server traffic,Overly broad ACL deny
+C18,ACL,medium,ACL rule order incorrect,ACL policy blocking traffic,yes,Edited,AI named ACL block but reviewer corrected to rule ordering issue,ACL rule order incorrect
+C19,ACL,high,Missing isolation ACL entry,VLAN/trunk misconfiguration,no,Accepted,Guest isolation ACL entry missing as expected,Missing isolation ACL entry
+C20,NAT,high,NAT inside/outside interfaces reversed,NAT mapping or ACL mismatch,no,Accepted,NAT interface roles reversed in configuration,NAT inside/outside interfaces reversed
+C21,NAT,medium,NAT ACL missing inside subnet,NAT mapping or ACL mismatch,yes,Edited,AI mentioned NAT broadly; reviewer corrected to ACL subnet omission,NAT ACL missing inside subnet
+C22,NAT,medium,NAT pool/overload sizing issue,NAT mapping or ACL mismatch,no,Rejected,AI confidence too high with limited evidence; adjusted to sizing issue,NAT pool/overload sizing issue
+C23,Wireless,high,Wireless PSK mismatch,Wireless auth or VLAN mapping issue,no,Accepted,Client auth failures matched PSK mismatch,Wireless PSK mismatch
+C24,Wireless,high,Wireless client VLAN not allowed on trunk,VLAN/trunk misconfiguration,yes,Accepted,Trunk missing wireless VLAN verified,Wireless client VLAN not allowed on trunk
+C25,Wireless,high,SSID mapped to wrong VLAN,VLAN/trunk misconfiguration,yes,Edited,AI said ACL issue but reviewer confirmed wrong SSID-to-VLAN mapping,SSID mapped to wrong VLAN
+C26,Routing,high,Uplink interface down,L3 addressing mismatch,no,Accepted,Uplink interface down in status output,Uplink interface down
+C27,Routing,medium,Missing distribution summary route,VLAN/trunk misconfiguration,no,Accepted,Summary route absent and traffic blackholed,Missing distribution summary route
+C28,ACL,high,Voice signaling blocked by ACL,L3 addressing mismatch,no,Accepted,ACL denied call signaling ports,Voice signaling blocked by ACL
+C29,DHCP,low,DHCP DNS option incorrect,DHCP scope or relay issue,yes,Accepted,DHCP option has external DNS instead of internal,DHCP DNS option incorrect
+C30,DNS,medium,DNS server not configured on clients/router,L3 addressing mismatch,no,Rejected,AI blamed NAT but reviewers confirmed DNS configuration gap,DNS server not configured on clients/router
+C31,Routing,medium,Missing route to management service subnet,VLAN/trunk misconfiguration,no,Accepted,Missing route to management service subnet,Missing route to management service subnet
+C32,Wireless,low,Co-channel interference on wireless channels,Wireless auth or VLAN mapping issue,no,Edited,AI blamed auth; RF logs indicate co-channel interference,Co-channel interference on wireless channels

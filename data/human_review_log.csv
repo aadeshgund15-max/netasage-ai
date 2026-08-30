@@ -1,0 +1,33 @@
+case_id,review_status,review_notes,final_fault
+C01,Accepted,AI and expected fault aligned with trunk evidence,Missing VLAN 20 on switch trunk
+C02,Accepted,,VLAN database not saved
+C03,Edited,AI said generic routing issue but review pinpointed missing dot1q encapsulation,Subinterface VLAN tag missing
+C04,Edited,,Missing default gateway on host
+C05,Accepted,Reviewed host config and confirmed wrong default gateway,Wrong default gateway configured on host
+C06,Accepted,Duplicate addressing confirmed by ARP instability,Duplicate static IP on clients
+C07,Accepted,No DHCP pool shown for VLAN70,Missing DHCP pool
+C08,Accepted,,Missing DHCP relay helper
+C09,Edited,AI focused DHCP generally; corrected to wrong default-router option,DHCP option default-router incorrect
+C10,Accepted,Mask mismatch verified on one host,Wrong subnet mask
+C11,Accepted,DNS server absent in host settings,Missing DNS server setting
+C12,Rejected,AI root cause was too vague and missed record-level problem,Missing DNS A record
+C13,Accepted,Route to DNS subnet absent in table,Missing route to DNS server network
+C14,Accepted,Static route absent as expected,Missing static route
+C15,Edited,AI labeled as route missing; reviewer set OSPF network type mismatch,OSPF network type mismatch
+C16,Accepted,,EIGRP network statement missing
+C17,Accepted,ACL deny line clearly blocks app server traffic,Overly broad ACL deny
+C18,Edited,AI named ACL block but reviewer corrected to rule ordering issue,ACL rule order incorrect
+C19,Accepted,Guest isolation ACL entry missing as expected,Missing isolation ACL entry
+C20,Accepted,NAT interface roles reversed in configuration,NAT inside/outside interfaces reversed
+C21,Edited,AI mentioned NAT broadly; reviewer corrected to ACL subnet omission,NAT ACL missing inside subnet
+C22,Rejected,AI confidence too high with limited evidence; adjusted to sizing issue,NAT pool/overload sizing issue
+C23,Accepted,Client auth failures matched PSK mismatch,Wireless PSK mismatch
+C24,Accepted,Trunk missing wireless VLAN verified,Wireless client VLAN not allowed on trunk
+C25,Edited,AI said ACL issue but reviewer confirmed wrong SSID-to-VLAN mapping,SSID mapped to wrong VLAN
+C26,Accepted,Uplink interface down in status output,Uplink interface down
+C27,Accepted,Summary route absent and traffic blackholed,Missing distribution summary route
+C28,Accepted,ACL denied call signaling ports,Voice signaling blocked by ACL
+C29,Accepted,DHCP option has external DNS instead of internal,DHCP DNS option incorrect
+C30,Rejected,AI blamed NAT but reviewers confirmed DNS configuration gap,DNS server not configured on clients/router
+C31,Accepted,Missing route to management service subnet,Missing route to management service subnet
+C32,Edited,AI blamed auth; RF logs indicate co-channel interference,Co-channel interference on wireless channels

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NetSage AI — Network Troubleshooting</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">N</div>
+        <div><strong>NetSage AI</strong><span>Network Troubleshooting Assistant</span></div>
+      </div>
+      <div class="status">
+        <span class="dot"></span>
+        <span id="backendStatus">Checking backend…</span>
+        <span class="prototype">Prototype</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">CISCO NETWORK TROUBLESHOOTING</p>
+          <h1>Find the likely fault.<br><em>Verify it with evidence.</em></h1>
+          <p class="hero-copy">Combine an AI-style diagnostic layer with deterministic configuration checks and human review.</p>
+        </div>
+        <div class="hero-card">
+          <span>32</span><small>training & troubleshooting cases</small>
+          <div class="hero-line"></div>
+          <span>6</span><small>configuration rules</small>
+        </div>
+      </section>
+
+      <section class="metrics" id="metrics"></section>
+
+      <section class="workspace">
+        <aside class="case-panel card">
+          <div class="card-head">
+            <div><p class="eyebrow">CASE LIBRARY</p><h2>Select a scenario</h2></div>
+            <span id="caseCount" class="count-pill">0</span>
+          </div>
+          <input id="caseSearch" class="search" placeholder="Search case, symptom, issue…">
+          <div id="caseList" class="case-list"></div>
+        </aside>
+
+        <section class="diagnosis card">
+          <div class="card-head">
+            <div><p class="eyebrow">LIVE DIAGNOSIS</p><h2 id="caseTitle">Choose a case</h2></div>
+            <button id="runBtn" class="primary" disabled>Analyze case <span>→</span></button>
+          </div>
+          <div id="caseMeta" class="meta-row"></div>
+          <div id="symptomBox" class="input-card empty-state">Select a case from the library to inspect its network symptoms and <code>show</code> output.</div>
+
+          <div id="resultArea" class="hidden">
+            <div class="section-label">LIKELY ROOT CAUSE</div>
+            <div class="root-cause">
+              <div class="cause-icon">!</div>
+              <div><h3 id="rootCause">—</h3><span id="confidence" class="confidence">Medium confidence</span></div>
+            </div>
+            
+            <div class="two-col">
+              <div class="mini-card">
+                <div class="section-label">EVIDENCE</div>
+                <ul id="evidence"></ul>
+              </div>
+              <div class="mini-card">
+                <div class="section-label">NEXT COMMAND</div>
+                <pre id="nextCommand"></pre>
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="section-label">DETERMINISTIC RULE CHECKS & REMEDIATION</div>
+              <div id="ruleFindings" class="finding-list"></div>
+            </div>
+
+            <div class="mini-card">
+              <div class="section-label">RECOMMENDED FIX</div>
+              <ol id="fixSteps" class="fix-list"></ol>
+            </div>
+
+            <div id="agreement" class="agreement"></div>
+          </div>
+
+          <div class="review-box">
+            <div>
+              <p class="eyebrow">HUMAN REVIEW</p>
+              <h3>Does the diagnosis look correct?</h3>
+              <p>Record a reviewer decision; the Python backend updates the saved review log and dashboard.</p>
+            </div>
+            <div class="review-controls">
+              <select id="reviewStatus">
+                <option>Accepted</option>
+                <option>Edited</option>
+                <option>Rejected</option>
+              </select>
+              <input id="reviewFault" placeholder="Final fault (optional)">
+              <input id="reviewNotes" placeholder="Review note (optional)">
+              <button id="saveReview" class="secondary">Save review</button>
+            </div>
+            <div id="reviewMessage" class="review-message"></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="custom card">
+        <div class="card-head">
+          <div><p class="eyebrow">TRY YOUR OWN INPUT</p><h2>Diagnose a network symptom</h2></div>
+          <span class="soft-pill">Uses the same backend</span>
+        </div>
+        <div class="form-grid">
+          <label>Symptom<textarea id="customSymptom" placeholder="Example: PC cannot reach server in VLAN 20…"></textarea></label>
+          <label><code>show</code> output<textarea id="customShow" placeholder="Paste relevant Cisco show command output…"></textarea></label>
+        </div>
+        <button id="customBtn" class="primary">Run diagnosis <span>→</span></button>
+        <div id="customResult" class="custom-result hidden"></div>
+      </section>
+    </main>
+
+    <footer>
+      <span>NetSage AI • Independent prototype</span>
+      <span>Python backend • Browser UI • Human-in-the-loop</span>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
